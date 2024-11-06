@@ -21,10 +21,17 @@ class River:
 
     def check_ages(self):
         """Remove Fish older than 3 days and Bears older than 5 days."""
-        surviving_bears = [bear for bear in self.bears if bear.age <= 5]
+        surviving_bears: list[Bear] = []
+        surviving_fish: list[Fish] = []
+
+        for bear in self.bears:
+            if bear.age <= 5:
+                surviving_bears.append(bear)
         self.bears = surviving_bears
 
-        surviving_fish = [fish for fish in self.fish if fish.age <= 3]
+        for fish in self.fish:
+            if fish.age <= 3:
+                surviving_fish.append(fish)
         self.fish = surviving_fish
         return None
 
